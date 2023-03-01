@@ -1,0 +1,15 @@
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\bin\Debug\net7.0\knightsTour.exe
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\bin\Debug\net7.0\knightsTour.deps.json
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\bin\Debug\net7.0\knightsTour.runtimeconfig.json
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\bin\Debug\net7.0\knightsTour.dll
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\bin\Debug\net7.0\knightsTour.pdb
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.csproj.AssemblyReference.cache
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.AssemblyInfoInputs.cache
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.AssemblyInfo.cs
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.csproj.CoreCompileInputs.cache
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.dll
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\refint\knightsTour.dll
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.pdb
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\knightsTour.genruntimeconfig.cache
+C:\Users\kb\Desktop\WD\Console\algorithmsAndInterviews\knightsTour\obj\Debug\net7.0\ref\knightsTour.dll
