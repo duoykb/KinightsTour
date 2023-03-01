@@ -23,11 +23,8 @@ DisplayBoard();
 
 WriteLine("---");
 
+var builder = new StringBuilder();
+foreach (var i in KnightsTourPb.FindSequence(12)) builder.Append($"{i}->");
+builder.Remove(builder.Length-1, 1);
 
-foreach (var n in new[]{1,4,12,32,57,50})
-{
-    WriteLine($"{n}: maxR {KnightsTourPb.MaxRight(n)}");
-    WriteLine($"{n}: maxL {KnightsTourPb.MaxLeft(n)}");
-}
-
-
+WriteLine($"{builder}");
