@@ -39,13 +39,13 @@ public static class Moves
             yield return oneOnY;
     }
 
-    public static IEnumerable<int> FindNextMovesFrom(int start) =>
-        TwoOnYOneOnX(start )
-            .Chain(TwoOnYOneOnX(start, directionX:1))
-            .Chain(TwoOnYOneOnX(start, 1,1))
-            .Chain(TwoOnYOneOnX(start, 1))
-            .Chain(TwoOnXOneOnY(start))
-            .Chain(TwoOnXOneOnY(start,directionY:1))
-            .Chain(TwoOnXOneOnY(start,1,1))
-            .Chain(TwoOnXOneOnY(start,directionX:1));
+    public static IEnumerable<int> FindNextMovesFrom(int current) =>
+        TwoOnYOneOnX(current )
+            .Chain(TwoOnYOneOnX(current, directionX:1))
+            .Chain(TwoOnYOneOnX(current, 1,1))
+            .Chain(TwoOnYOneOnX(current, 1))
+            .Chain(TwoOnXOneOnY(current))
+            .Chain(TwoOnXOneOnY(current,directionY:1))
+            .Chain(TwoOnXOneOnY(current,1,1))
+            .Chain(TwoOnXOneOnY(current,directionX:1));
 }
