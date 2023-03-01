@@ -1,55 +1,29 @@
 ﻿using knightsTour.Extensions;
-
 namespace knightsTour;
 
 public static class KnightsTourPb
 {
-    private static int MinLeft(int n) => (MaxRight(n) - 8) + 1;
-    private static int MaxRight(int n) => (int)Math.Ceiling((double)n / 8) * 8;
-
-    private static IEnumerable<int> TwoOnYOneOnX(int m, int directionY = -1, int directionX = -1)
+    private static bool isSequenceFound = false;
+    private static LinkedList<int> seq = new();
+    public static LinkedList<int> FindSequence(int start)
     {
-        var maxRight = MaxRight(m);
-        var newMaxRight = maxRight + (16 * directionY);
-        if (newMaxRight is > 64 or < 8)
-            yield break;
-        
-        var twoOnY = newMaxRight - (maxRight - m);
-        var newMinLeft = MinLeft(twoOnY);
-        var oneOnX = twoOnY + (1 * directionX);
-        
-        if (newMinLeft <= oneOnX && oneOnX <= newMaxRight)
-            yield return oneOnX;
-    }
+        static void Main(IEnumerable<int> moves, LinkedList<int> visitedMoves)
+        {
+            if(isSequenceFound) return;
+            if (visitedMoves.Count > seq.Count) seq = new LinkedList<int>(visitedMoves);
+            if (seq.Count is 64) isSequenceFound = true;
+            foreach (var move in moves)
+            {
+                if(visitedMoves.Contains(move)) continue;
+                visitedMoves.AddLast(move);
+                Main(Moves.FindNextMovesFrom(move), visitedMoves);
+                visitedMoves.RemoveLast();
+            }
+        }
 
-    private static IEnumerable<int> TwoOnXOneOnY(int m, int directionY = -1, int directionX = -1)
-    {
-        var maxRight = MaxRight(m);
-        var minLeft = MinLeft(m);
-        var twoOnX = m + (2 * directionX);
-        
-        if (! (minLeft <= twoOnX && twoOnX <= maxRight))
-            yield break;
-
-        var newMaxRight = maxRight + (directionY * 8);
-        var oneOnY = newMaxRight - (maxRight - twoOnX);
-
-        if (oneOnY is >= 1 and <= 64)
-            yield return oneOnY;
-    }
-
-    public static IEnumerable<int> FindAvailableMoves(int start) =>
-        TwoOnYOneOnX(start )
-            .Chain(TwoOnYOneOnX(start, directionX:1))
-            .Chain(TwoOnYOneOnX(start, 1,1))
-            .Chain(TwoOnYOneOnX(start, 1))
-            .Chain(TwoOnXOneOnY(start))
-            .Chain(TwoOnXOneOnY(start,directionY:1))
-            .Chain(TwoOnXOneOnY(start,1,1))
-            .Chain(TwoOnXOneOnY(start,directionX:1));
-
-    public static IEnumerable<int> FindSequence(int start)
-    {
-        return null;
+        LinkedList<int> visitedMoves = new();
+        visitedMoves.AddLast(12);
+        Main(Moves.FindNextMovesFrom(start),visitedMoves);
+        return seq;
     }
 }
