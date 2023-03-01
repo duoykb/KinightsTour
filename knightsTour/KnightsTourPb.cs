@@ -1,30 +1,52 @@
-﻿namespace knightsTour;
+﻿using knightsTour.Extensions;
+
+namespace knightsTour;
 
 public static class KnightsTourPb
 {
-    public static int MaxLeft(int n) => (MaxRight(n) - 8) + 1;
-    public static int MaxRight(int n) => (int)Math.Ceiling((double)n / 8) * 8;
+    private static int MinLeft(int n) => (MaxRight(n) - 8) + 1;
+    private static int MaxRight(int n) => (int)Math.Ceiling((double)n / 8) * 8;
 
-    public IEnumerable<int>? TwoUpOneOnX()
+    private static IEnumerable<int> TwoOnYOneOnX(int m, int directionY = -1, int directionX = -1)
     {
-        var maxR = MaxRight(m);
-        var newMr = maxR - 16;
-        if (newMr is > 64 or < 8)
-            return;
-        var twoUp = newMr - (maxR - m);
-        var oneLeft = twoUp - 1;
-        var oneRight = twoUp + 1;
+        var maxRight = MaxRight(m);
+        var newMaxRight = maxRight + (16 * directionY);
+        if (newMaxRight is > 64 or < 8)
+            yield break;
         
-        if 
+        var twoOnY = newMaxRight - (maxRight - m);
+        var newMinLeft = MinLeft(twoOnY);
+        var oneOnX = twoOnY + (1 * directionX);
+        
+        if (newMinLeft <= oneOnX && oneOnX <= newMaxRight)
+            yield return oneOnX;
     }
 
-    public static IEnumerable<int>? FindNextMoves(int m)
+    private static IEnumerable<int> TwoOnXOneOnY(int m, int directionY = -1, int directionX = -1)
     {
-        var twoUpOneLeft = int?() =>
-        {
+        var maxRight = MaxRight(m);
+        var minLeft = MinLeft(m);
+        var twoOnX = m + (2 * directionX);
+        
+        if (! (minLeft <= twoOnX && twoOnX <= maxRight))
+            yield break;
 
-        }
+        var newMaxRight = maxRight + (directionY * 8);
+        var oneOnY = newMaxRight - (maxRight - twoOnX);
+
+        if (oneOnY is >= 1 and <= 64)
+            yield return oneOnY;
     }
+
+    public static IEnumerable<int> FindAvailableMoves(int start) =>
+        TwoOnYOneOnX(start )
+            .Chain(TwoOnYOneOnX(start, directionX:1))
+            .Chain(TwoOnYOneOnX(start, 1,1))
+            .Chain(TwoOnYOneOnX(start, 1))
+            .Chain(TwoOnXOneOnY(start))
+            .Chain(TwoOnXOneOnY(start,directionY:1))
+            .Chain(TwoOnXOneOnY(start,1,1))
+            .Chain(TwoOnXOneOnY(start,directionX:1));
 
     public static IEnumerable<int> FindSequence(int start)
     {
