@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using knightsTour.Tools;
 
 static void DisplayBoard()
 {
@@ -20,11 +21,16 @@ static void DisplayBoard()
     WriteLine($"{builder}");
 }
 DisplayBoard();
-
-WriteLine("---");
+WriteLine();
 
 var builder = new StringBuilder();
 foreach (var i in KnightsTourPb.FindSequence(12)) builder.Append($"{i}->");
-builder.Remove(builder.Length-1, 1);
-
+builder.Remove(builder.Length-2, 2);
 WriteLine($"{builder}");
+
+//----
+
+// EfficiencyMeasure.Start();
+// KnightsTourPb.FindSequence(12);
+// EfficiencyMeasure.Stop();
+// EfficiencyMeasure.Log();
