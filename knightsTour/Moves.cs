@@ -1,10 +1,8 @@
 ﻿using knightsTour.Extensions;
 
 namespace knightsTour;
-
 public static class Moves
 {
-    
     private static int MinLeft(int n) => (MaxRight(n) - 8) + 1;
     private static int MaxRight(int n) => (int)Math.Ceiling((double)n / 8) * 8;
 
@@ -38,7 +36,12 @@ public static class Moves
         if (oneOnY is >= 1 and <= 64)
             yield return oneOnY;
     }
-
+    /// <summary>
+    /// Given a chess board where each position is represented as a number between 1-64,
+    /// the method returns the next possible moves.
+    /// </summary>
+    /// <param name="current">a value between 1 and 64 including both.</param>
+    /// <returns>IEnumerable of the available moves from the given position</returns>
     public static IEnumerable<int> FindNextMovesFrom(int current) =>
         TwoOnYOneOnX(current )
             .Chain(TwoOnYOneOnX(current, directionX:1))
